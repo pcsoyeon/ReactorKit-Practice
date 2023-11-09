@@ -21,6 +21,7 @@ final class CounterViewController: UIViewController, View {
     private lazy var decreaseButton = UIButton()
     private lazy var increaseButton = UIButton()
     private lazy var valueLabel = UILabel()
+    private lazy var activityIndicatorView = UIActivityIndicatorView(style: .large)
     
     // MARK: - Properties
     
@@ -58,6 +59,7 @@ final class CounterViewController: UIViewController, View {
         view.addSubview(decreaseButton)
         view.addSubview(valueLabel)
         view.addSubview(increaseButton)
+        view.addSubview(activityIndicatorView)
         
         decreaseButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -69,6 +71,10 @@ final class CounterViewController: UIViewController, View {
         increaseButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(valueLabel.snp.right).offset(10)
+        }
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(48)
         }
     }
     
@@ -92,6 +98,35 @@ extension CounterViewController {
             .tap
             .map { Reactor.Action.decrease }
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // State
+        reactor.state.map { $0.value } // 10
+            .distinctUntilChanged()
+            .map { "\($0)" }               // "10"
+            .bind(to: valueLabel.rx.text)  // Bind to valueLabel
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .bind(to: activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        reactor.pulse(\.$alertMessage)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] message in
+                let alertController = UIAlertController(
+                    title: nil,
+                    message: message,
+                    preferredStyle: .alert
+                )
+                alertController.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: nil
+                ))
+                self?.present(alertController, animated: true)
+            })
             .disposed(by: disposeBag)
     }
     

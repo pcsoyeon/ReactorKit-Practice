@@ -79,7 +79,20 @@ final class CounterViewController: UIViewController, View {
 extension CounterViewController {
     
     func bind(reactor: CounterReactor) {
+        // Action
+        increaseButton
+            .rx
+            .tap // Tap
+            .map { Reactor.Action.increase } // Convert to Action.increase
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
+        decreaseButton
+            .rx
+            .tap
+            .map { Reactor.Action.decrease }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
 }

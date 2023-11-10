@@ -17,7 +17,6 @@
 		9EC104AA2AFCB5320045FAD6 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104A92AFCB5320045FAD6 /* ReactorKit */; };
 		9EC104AD2AFCB5810045FAD6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104AC2AFCB5810045FAD6 /* RxCocoa */; };
 		9EC104B02AFCB68D0045FAD6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104AF2AFCB68D0045FAD6 /* SnapKit */; };
-		9EC104B22AFCB8050045FAD6 /* CounterReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */; };
 		9EC105B82AFE00A70045FAD6 /* CounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B42AFE00A70045FAD6 /* CounterRouter.swift */; };
 		9EC105B92AFE00A70045FAD6 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */; };
 		9EC105BA2AFE00A70045FAD6 /* CounterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */; };
@@ -56,7 +55,6 @@
 		9EC104902AFCB4740045FAD6 /* CounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC104942AFCB4740045FAD6 /* CounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterUITests.swift; sourceTree = "<group>"; };
 		9EC104962AFCB4740045FAD6 /* CounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReactor.swift; sourceTree = "<group>"; };
 		9EC105B42AFE00A70045FAD6 /* CounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRouter.swift; sourceTree = "<group>"; };
 		9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBuilder.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				9EC104A42AFCB4920045FAD6 /* Resource */,
 				9EC104A32AFCB4840045FAD6 /* AppStart */,
 				9EC104812AFCB4740045FAD6 /* Info.plist */,
-				9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 				9EC105B92AFE00A70045FAD6 /* CounterViewController.swift in Sources */,
 				9EC105BA2AFE00A70045FAD6 /* CounterBuilder.swift in Sources */,
 				9EC105BB2AFE00A70045FAD6 /* CounterInteractor.swift in Sources */,
-				9EC104B22AFCB8050045FAD6 /* CounterReactor.swift in Sources */,
 				9EC105C32AFE051F0045FAD6 /* CounterStateAction.swift in Sources */,
 				9EC105B82AFE00A70045FAD6 /* CounterRouter.swift in Sources */,
 			);

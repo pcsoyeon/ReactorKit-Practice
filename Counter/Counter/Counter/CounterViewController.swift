@@ -31,7 +31,6 @@ final class CounterViewController:
     // MARK: - Reactor
     
     var disposeBag = DisposeBag()
-    typealias Reactor = CounterReactor
     
     override func viewDidLoad() {
         super.viewDidLoad()

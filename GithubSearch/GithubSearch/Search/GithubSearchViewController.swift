@@ -12,11 +12,19 @@ import ReactorKit
 import RxCocoa
 import SnapKit
 
-final class GithubSearchViewController: UIViewController {
+final class GithubSearchViewController:
+    UIViewController,
+    View
+{
+    typealias Reactor = GithubSearchReactor
     
     // MARK: - Views
     
     private lazy var tableView = UITableView()
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Properties
     
@@ -25,6 +33,12 @@ final class GithubSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GithubSearchReactor) {
+        
     }
     
 }

@@ -2,19 +2,29 @@
 //  CounterViewController.swift
 //  Counter
 //
-//  Created by 김소연 on 11/9/23.
+//  Created by 김소연 on 11/10/23.
 //
 
 import UIKit
 
 import ReactorKit
+import RIBs
 import RxCocoa
 import RxSwift
 import SnapKit
 
-final class CounterViewController: UIViewController, View {
+protocol CounterPresentableListener: AnyObject {
     
-    typealias Reactor = CounterReactor
+}
+
+final class CounterViewController:
+    UIViewController,
+    CounterPresentable,
+    CounterViewControllable,
+    View
+{
+    
+    weak var listener: CounterPresentableListener?
     
     // MARK: - Views
     
@@ -23,66 +33,15 @@ final class CounterViewController: UIViewController, View {
     private lazy var valueLabel = UILabel()
     private lazy var activityIndicatorView = UIActivityIndicatorView(style: .large)
     
-    // MARK: - Properties
+    // MARK: - Reactor
     
     var disposeBag = DisposeBag()
-    
-    
-    // MARK: - Life Cycle
+    typealias Reactor = CounterReactor
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
-    
-    // MARK: - Helper
-    
-    private func configureUI() {
-        view.backgroundColor = .white
-        
-        decreaseButton.setTitle("-", for: .normal)
-        decreaseButton.setTitleColor(.systemBlue, for: .normal)
-        decreaseButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .medium)
-        
-        increaseButton.setTitle("+", for: .normal)
-        increaseButton.setTitleColor(.systemBlue, for: .normal)
-        increaseButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .medium)
-        
-        valueLabel.text = "0"
-        valueLabel.textColor = .black
-        valueLabel.font = .systemFont(ofSize: 28, weight: .medium)
-        
-        layout()
-    }
-    
-    private func layout() {
-        view.addSubview(decreaseButton)
-        view.addSubview(valueLabel)
-        view.addSubview(increaseButton)
-        view.addSubview(activityIndicatorView)
-        
-        decreaseButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalTo(valueLabel.snp.left).offset(-10)
-        }
-        valueLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-        increaseButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.left.equalTo(valueLabel.snp.right).offset(10)
-        }
-        activityIndicatorView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalTo(48)
-        }
-    }
-    
-}
-
-// MARK: - Reactor Bind
-
-extension CounterViewController {
     
     func bind(reactor: CounterReactor) {
         // Action
@@ -128,6 +87,53 @@ extension CounterViewController {
                 self?.present(alertController, animated: true)
             })
             .disposed(by: disposeBag)
+    }
+    
+}
+
+// MARK: - Configure UI
+
+extension CounterViewController {
+    
+    private func configureUI() {
+        view.backgroundColor = .white
+        
+        decreaseButton.setTitle("-", for: .normal)
+        decreaseButton.setTitleColor(.systemBlue, for: .normal)
+        decreaseButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .medium)
+        
+        increaseButton.setTitle("+", for: .normal)
+        increaseButton.setTitleColor(.systemBlue, for: .normal)
+        increaseButton.titleLabel?.font = .systemFont(ofSize: 28, weight: .medium)
+        
+        valueLabel.text = "0"
+        valueLabel.textColor = .black
+        valueLabel.font = .systemFont(ofSize: 28, weight: .medium)
+        
+        layout()
+    }
+    
+    private func layout() {
+        view.addSubview(decreaseButton)
+        view.addSubview(valueLabel)
+        view.addSubview(increaseButton)
+        view.addSubview(activityIndicatorView)
+        
+        decreaseButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.right.equalTo(valueLabel.snp.left).offset(-10)
+        }
+        valueLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        increaseButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.left.equalTo(valueLabel.snp.right).offset(10)
+        }
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(48)
+        }
     }
     
 }

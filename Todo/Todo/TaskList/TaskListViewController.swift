@@ -7,16 +7,23 @@
 
 import UIKit
 
-import RealityKit
+import ReactorKit
 import RxCocoa
 import RxSwift
 import SnapKit
 
-final class TaskListViewController: UIViewController {
+final class TaskListViewController: UIViewController, View {
+    
+    typealias Reactor = TaskListReactor
     
     // MARK: - Views
     
     private lazy var tableView = UITableView()
+    
+    // MARK: - Properties
+    
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - LifeCycle
     
@@ -27,7 +34,9 @@ final class TaskListViewController: UIViewController {
     
     // MARK: - Helpers
     
-    
+    func bind(reactor: TaskListReactor) {
+        
+    }
     
 }
 

@@ -20,6 +20,7 @@
 		9EC1054F2AFDDEE40045FAD6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC1054E2AFDDEE40045FAD6 /* RxCocoa */; };
 		9EC105512AFDDFD40045FAD6 /* TaskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105502AFDDFD40045FAD6 /* TaskListCell.swift */; };
 		9EC105532AFDDFFB0045FAD6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105522AFDDFFB0045FAD6 /* Task.swift */; };
+		9EC105552AFDE0FF0045FAD6 /* TaskListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105542AFDE0FF0045FAD6 /* TaskListReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		9EC105452AFDDEB20045FAD6 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		9EC105502AFDDFD40045FAD6 /* TaskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCell.swift; sourceTree = "<group>"; };
 		9EC105522AFDDFFB0045FAD6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9EC105542AFDE0FF0045FAD6 /* TaskListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				9EC105452AFDDEB20045FAD6 /* TaskListViewController.swift */,
 				9EC105502AFDDFD40045FAD6 /* TaskListCell.swift */,
 				9EC105522AFDDFFB0045FAD6 /* Task.swift */,
+				9EC105542AFDE0FF0045FAD6 /* TaskListReactor.swift */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC105512AFDDFD40045FAD6 /* TaskListCell.swift in Sources */,
+				9EC105552AFDE0FF0045FAD6 /* TaskListReactor.swift in Sources */,
 				9EC105132AFDDE390045FAD6 /* AppDelegate.swift in Sources */,
 				9EC105532AFDDFFB0045FAD6 /* Task.swift in Sources */,
 				9EC105152AFDDE390045FAD6 /* SceneDelegate.swift in Sources */,

@@ -2,19 +2,24 @@
 //  CounterViewController.swift
 //  Counter
 //
-//  Created by 김소연 on 11/9/23.
+//  Created by 김소연 on 11/10/23.
 //
 
 import UIKit
 
 import ReactorKit
+import RIBs
 import RxCocoa
 import RxSwift
 import SnapKit
 
-final class CounterViewController: UIViewController, View {
+final class CounterViewController:
+    UIViewController,
+    CounterPresentable,
+    CounterViewControllable
+{
     
-    typealias Reactor = CounterReactor
+    weak var listener: CounterPresentableListener?
     
     // MARK: - Views
     
@@ -23,19 +28,61 @@ final class CounterViewController: UIViewController, View {
     private lazy var valueLabel = UILabel()
     private lazy var activityIndicatorView = UIActivityIndicatorView(style: .large)
     
-    // MARK: - Properties
+    // MARK: - Reactor
     
     var disposeBag = DisposeBag()
-    
-    
-    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bind(listener: listener)
     }
     
-    // MARK: - Helper
+    private func bind(listener: CounterPresentableListener?) {
+        guard let listener = listener else { return }
+        bindActions()
+        bindStates(from: listener)
+    }
+    
+    private func bindActions() {
+        increaseButton
+            .rx
+            .tap
+            .bind(with: self) { owner, _ in
+                owner.listener?.increase()
+            }
+            .disposed(by: disposeBag)
+        
+        decreaseButton
+            .rx
+            .tap
+            .bind(with: self) { owner, _ in
+                owner.listener?.decrease()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindStates(from listener: CounterPresentableListener) {
+        listener.state
+            .map { "\($0.value)" }
+            .bind(with: self) { owner, valueString in
+                owner.valueLabel.text = valueString
+            }
+            .disposed(by: disposeBag)
+        
+        listener.state
+            .map { $0.alertMessage }
+            .bind(with: self) { owner, alertMessage in
+                print(alertMessage)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+}
+
+// MARK: - Configure UI
+
+extension CounterViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
@@ -76,58 +123,6 @@ final class CounterViewController: UIViewController, View {
             $0.center.equalToSuperview()
             $0.size.equalTo(48)
         }
-    }
-    
-}
-
-// MARK: - Reactor Bind
-
-extension CounterViewController {
-    
-    func bind(reactor: CounterReactor) {
-        // Action
-        increaseButton
-            .rx
-            .tap // Tap
-            .map { Reactor.Action.increase } // Convert to Action.increase
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
-        decreaseButton
-            .rx
-            .tap
-            .map { Reactor.Action.decrease }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
-        // State
-        reactor.state.map { $0.value } // 10
-            .distinctUntilChanged()
-            .map { "\($0)" }               // "10"
-            .bind(to: valueLabel.rx.text)  // Bind to valueLabel
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isLoading }
-            .distinctUntilChanged()
-            .bind(to: activityIndicatorView.rx.isAnimating)
-            .disposed(by: disposeBag)
-        
-        reactor.pulse(\.$alertMessage)
-            .compactMap { $0 }
-            .subscribe(onNext: { [weak self] message in
-                let alertController = UIAlertController(
-                    title: nil,
-                    message: message,
-                    preferredStyle: .alert
-                )
-                alertController.addAction(UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: nil
-                ))
-                self?.present(alertController, animated: true)
-            })
-            .disposed(by: disposeBag)
     }
     
 }

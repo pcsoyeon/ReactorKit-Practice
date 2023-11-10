@@ -14,11 +14,16 @@
 		9EC1048B2AFCB4740045FAD6 /* CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1048A2AFCB4740045FAD6 /* CounterTests.swift */; };
 		9EC104952AFCB4740045FAD6 /* CounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104942AFCB4740045FAD6 /* CounterUITests.swift */; };
 		9EC104972AFCB4740045FAD6 /* CounterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104962AFCB4740045FAD6 /* CounterUITestsLaunchTests.swift */; };
-		9EC104A72AFCB50A0045FAD6 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104A62AFCB50A0045FAD6 /* CounterViewController.swift */; };
 		9EC104AA2AFCB5320045FAD6 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104A92AFCB5320045FAD6 /* ReactorKit */; };
 		9EC104AD2AFCB5810045FAD6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104AC2AFCB5810045FAD6 /* RxCocoa */; };
 		9EC104B02AFCB68D0045FAD6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC104AF2AFCB68D0045FAD6 /* SnapKit */; };
-		9EC104B22AFCB8050045FAD6 /* CounterReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */; };
+		9EC105B82AFE00A70045FAD6 /* CounterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B42AFE00A70045FAD6 /* CounterRouter.swift */; };
+		9EC105B92AFE00A70045FAD6 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */; };
+		9EC105BA2AFE00A70045FAD6 /* CounterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */; };
+		9EC105BB2AFE00A70045FAD6 /* CounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */; };
+		9EC105BE2AFE010C0045FAD6 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC105BD2AFE010C0045FAD6 /* RIBs */; };
+		9EC105C12AFE02900045FAD6 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C02AFE02900045FAD6 /* AppComponent.swift */; };
+		9EC105C32AFE051F0045FAD6 /* CounterStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +55,12 @@
 		9EC104902AFCB4740045FAD6 /* CounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC104942AFCB4740045FAD6 /* CounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterUITests.swift; sourceTree = "<group>"; };
 		9EC104962AFCB4740045FAD6 /* CounterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9EC104A62AFCB50A0045FAD6 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
-		9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterReactor.swift; sourceTree = "<group>"; };
+		9EC105B42AFE00A70045FAD6 /* CounterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRouter.swift; sourceTree = "<group>"; };
+		9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
+		9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBuilder.swift; sourceTree = "<group>"; };
+		9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterInteractor.swift; sourceTree = "<group>"; };
+		9EC105C02AFE02900045FAD6 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterStateAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EC105BE2AFE010C0045FAD6 /* RIBs in Frameworks */,
 				9EC104B02AFCB68D0045FAD6 /* SnapKit in Frameworks */,
 				9EC104AD2AFCB5810045FAD6 /* RxCocoa in Frameworks */,
 				9EC104AA2AFCB5320045FAD6 /* ReactorKit in Frameworks */,
@@ -105,11 +115,11 @@
 		9EC104722AFCB4720045FAD6 /* Counter */ = {
 			isa = PBXGroup;
 			children = (
+				9EC105BF2AFE02760045FAD6 /* New Group */,
+				9EC105B32AFDFF410045FAD6 /* Counter */,
 				9EC104A42AFCB4920045FAD6 /* Resource */,
 				9EC104A32AFCB4840045FAD6 /* AppStart */,
 				9EC104812AFCB4740045FAD6 /* Info.plist */,
-				9EC104A62AFCB50A0045FAD6 /* CounterViewController.swift */,
-				9EC104B12AFCB8050045FAD6 /* CounterReactor.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -136,6 +146,7 @@
 			children = (
 				9EC104732AFCB4720045FAD6 /* AppDelegate.swift */,
 				9EC104752AFCB4720045FAD6 /* SceneDelegate.swift */,
+				9EC105C02AFE02900045FAD6 /* AppComponent.swift */,
 			);
 			path = AppStart;
 			sourceTree = "<group>";
@@ -147,6 +158,25 @@
 				9EC1047E2AFCB4740045FAD6 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		9EC105B32AFDFF410045FAD6 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				9EC105B42AFE00A70045FAD6 /* CounterRouter.swift */,
+				9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */,
+				9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */,
+				9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */,
+				9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */,
+			);
+			path = Counter;
+			sourceTree = "<group>";
+		};
+		9EC105BF2AFE02760045FAD6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +199,7 @@
 				9EC104A92AFCB5320045FAD6 /* ReactorKit */,
 				9EC104AC2AFCB5810045FAD6 /* RxCocoa */,
 				9EC104AF2AFCB68D0045FAD6 /* SnapKit */,
+				9EC105BD2AFE010C0045FAD6 /* RIBs */,
 			);
 			productName = Counter;
 			productReference = 9EC104702AFCB4720045FAD6 /* Counter.app */;
@@ -246,6 +277,7 @@
 				9EC104A82AFCB5320045FAD6 /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				9EC104AB2AFCB5810045FAD6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				9EC104AE2AFCB68D0045FAD6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9EC105BC2AFE010C0045FAD6 /* XCRemoteSwiftPackageReference "RIBs" */,
 			);
 			productRefGroup = 9EC104712AFCB4720045FAD6 /* Products */;
 			projectDirPath = "";
@@ -289,10 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC104A72AFCB50A0045FAD6 /* CounterViewController.swift in Sources */,
 				9EC104742AFCB4720045FAD6 /* AppDelegate.swift in Sources */,
+				9EC105C12AFE02900045FAD6 /* AppComponent.swift in Sources */,
 				9EC104762AFCB4720045FAD6 /* SceneDelegate.swift in Sources */,
-				9EC104B22AFCB8050045FAD6 /* CounterReactor.swift in Sources */,
+				9EC105B92AFE00A70045FAD6 /* CounterViewController.swift in Sources */,
+				9EC105BA2AFE00A70045FAD6 /* CounterBuilder.swift in Sources */,
+				9EC105BB2AFE00A70045FAD6 /* CounterInteractor.swift in Sources */,
+				9EC105C32AFE051F0045FAD6 /* CounterStateAction.swift in Sources */,
+				9EC105B82AFE00A70045FAD6 /* CounterRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +695,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		9EC105BC2AFE010C0045FAD6 /* XCRemoteSwiftPackageReference "RIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/RIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -676,6 +720,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9EC104AE2AFCB68D0045FAD6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		9EC105BD2AFE010C0045FAD6 /* RIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EC105BC2AFE010C0045FAD6 /* XCRemoteSwiftPackageReference "RIBs" */;
+			productName = RIBs;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

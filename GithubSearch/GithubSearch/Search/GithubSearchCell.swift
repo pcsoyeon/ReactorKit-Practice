@@ -9,9 +9,6 @@ import UIKit
 
 import SnapKit
 
-import UIKit
-import SnapKit
-
 final class GithubSearchCell: UITableViewCell {
     
     // MARK: - Views

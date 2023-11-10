@@ -13,15 +13,10 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-protocol CounterPresentableListener: AnyObject {
-    
-}
-
 final class CounterViewController:
     UIViewController,
     CounterPresentable,
-    CounterViewControllable,
-    View
+    CounterViewControllable
 {
     
     weak var listener: CounterPresentableListener?
@@ -41,51 +36,46 @@ final class CounterViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bind(listener: listener)
     }
     
-    func bind(reactor: CounterReactor) {
-        // Action
+    private func bind(listener: CounterPresentableListener?) {
+        guard let listener = listener else { return }
+        bindActions()
+        bindStates(from: listener)
+    }
+    
+    private func bindActions() {
         increaseButton
             .rx
-            .tap // Tap
-            .map { Reactor.Action.increase } // Convert to Action.increase
-            .bind(to: reactor.action)
+            .tap
+            .bind(with: self) { owner, _ in
+                owner.listener?.increase()
+            }
             .disposed(by: disposeBag)
         
         decreaseButton
             .rx
             .tap
-            .map { Reactor.Action.decrease }
-            .bind(to: reactor.action)
+            .bind(with: self) { owner, _ in
+                owner.listener?.decrease()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindStates(from listener: CounterPresentableListener) {
+        listener.state
+            .map { "\($0.value)" }
+            .bind(with: self) { owner, valueString in
+                owner.valueLabel.text = valueString
+            }
             .disposed(by: disposeBag)
         
-        // State
-        reactor.state.map { $0.value } // 10
-            .distinctUntilChanged()
-            .map { "\($0)" }               // "10"
-            .bind(to: valueLabel.rx.text)  // Bind to valueLabel
-            .disposed(by: disposeBag)
-        
-        reactor.state.map { $0.isLoading }
-            .distinctUntilChanged()
-            .bind(to: activityIndicatorView.rx.isAnimating)
-            .disposed(by: disposeBag)
-        
-        reactor.pulse(\.$alertMessage)
-            .compactMap { $0 }
-            .subscribe(onNext: { [weak self] message in
-                let alertController = UIAlertController(
-                    title: nil,
-                    message: message,
-                    preferredStyle: .alert
-                )
-                alertController.addAction(UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: nil
-                ))
-                self?.present(alertController, animated: true)
-            })
+        listener.state
+            .map { $0.alertMessage }
+            .bind(with: self) { owner, alertMessage in
+                print(alertMessage)
+            }
             .disposed(by: disposeBag)
     }
     

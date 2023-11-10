@@ -24,6 +24,7 @@
 		9EC105BB2AFE00A70045FAD6 /* CounterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */; };
 		9EC105BE2AFE010C0045FAD6 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC105BD2AFE010C0045FAD6 /* RIBs */; };
 		9EC105C12AFE02900045FAD6 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C02AFE02900045FAD6 /* AppComponent.swift */; };
+		9EC105C32AFE051F0045FAD6 /* CounterStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBuilder.swift; sourceTree = "<group>"; };
 		9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterInteractor.swift; sourceTree = "<group>"; };
 		9EC105C02AFE02900045FAD6 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterStateAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				9EC105B52AFE00A70045FAD6 /* CounterViewController.swift */,
 				9EC105B62AFE00A70045FAD6 /* CounterBuilder.swift */,
 				9EC105B72AFE00A70045FAD6 /* CounterInteractor.swift */,
+				9EC105C22AFE051F0045FAD6 /* CounterStateAction.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				9EC105BA2AFE00A70045FAD6 /* CounterBuilder.swift in Sources */,
 				9EC105BB2AFE00A70045FAD6 /* CounterInteractor.swift in Sources */,
 				9EC104B22AFCB8050045FAD6 /* CounterReactor.swift in Sources */,
+				9EC105C32AFE051F0045FAD6 /* CounterStateAction.swift in Sources */,
 				9EC105B82AFE00A70045FAD6 /* CounterRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

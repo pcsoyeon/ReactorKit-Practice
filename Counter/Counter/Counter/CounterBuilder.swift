@@ -32,8 +32,10 @@ final class CounterBuilder: Builder<CounterDependency>, CounterBuildable {
     func build() -> LaunchRouting {
         let component = CounterComponent(dependency: dependency)
         let viewController = CounterViewController()
-        viewController.reactor = CounterReactor()
-        let interactor = CounterInteractor(presenter: viewController)
+        let interactor = CounterInteractor(
+            presenter: viewController,
+            initialState: CounterState.init(value: 0, isLoading: false)
+        )
         
         return LaunchRouter(
             interactor: interactor,

@@ -21,10 +21,6 @@
 		9EC104FE2AFDA8F70045FAD6 /* GithubSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104FD2AFDA8F70045FAD6 /* GithubSearchReactor.swift */; };
 		9EC105002AFDAA070045FAD6 /* GithubSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC104FF2AFDAA070045FAD6 /* GithubSearchCell.swift */; };
 		9EC105032AFDB32D0045FAD6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC105022AFDB32D0045FAD6 /* Alamofire */; };
-		9EC105C92AFE0E780045FAD6 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C52AFE0E780045FAD6 /* SearchRouter.swift */; };
-		9EC105CA2AFE0E780045FAD6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C62AFE0E780045FAD6 /* SearchViewController.swift */; };
-		9EC105CB2AFE0E780045FAD6 /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C72AFE0E780045FAD6 /* SearchBuilder.swift */; };
-		9EC105CC2AFE0E780045FAD6 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC105C82AFE0E780045FAD6 /* SearchInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +55,6 @@
 		9EC104F22AFDA0100045FAD6 /* GithubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchViewController.swift; sourceTree = "<group>"; };
 		9EC104FD2AFDA8F70045FAD6 /* GithubSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchReactor.swift; sourceTree = "<group>"; };
 		9EC104FF2AFDAA070045FAD6 /* GithubSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchCell.swift; sourceTree = "<group>"; };
-		9EC105C52AFE0E780045FAD6 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
-		9EC105C62AFE0E780045FAD6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		9EC105C72AFE0E780045FAD6 /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
-		9EC105C82AFE0E780045FAD6 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +109,6 @@
 		9EC104BE2AFD9F6B0045FAD6 /* GithubSearch */ = {
 			isa = PBXGroup;
 			children = (
-				9EC105C42AFE0E5E0045FAD6 /* Search */,
 				9EC104F12AFD9FF60045FAD6 /* GithubSearch */,
 				9EC104F02AFD9F7C0045FAD6 /* Resource */,
 				9EC104EF2AFD9F720045FAD6 /* AppStart */,
@@ -169,17 +160,6 @@
 				9EC104FF2AFDAA070045FAD6 /* GithubSearchCell.swift */,
 			);
 			path = GithubSearch;
-			sourceTree = "<group>";
-		};
-		9EC105C42AFE0E5E0045FAD6 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				9EC105C52AFE0E780045FAD6 /* SearchRouter.swift */,
-				9EC105C62AFE0E780045FAD6 /* SearchViewController.swift */,
-				9EC105C72AFE0E780045FAD6 /* SearchBuilder.swift */,
-				9EC105C82AFE0E780045FAD6 /* SearchInteractor.swift */,
-			);
-			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,11 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC105C92AFE0E780045FAD6 /* SearchRouter.swift in Sources */,
-				9EC105CA2AFE0E780045FAD6 /* SearchViewController.swift in Sources */,
 				9EC104C02AFD9F6B0045FAD6 /* AppDelegate.swift in Sources */,
-				9EC105CC2AFE0E780045FAD6 /* SearchInteractor.swift in Sources */,
-				9EC105CB2AFE0E780045FAD6 /* SearchBuilder.swift in Sources */,
 				9EC104FE2AFDA8F70045FAD6 /* GithubSearchReactor.swift in Sources */,
 				9EC104C22AFD9F6B0045FAD6 /* SceneDelegate.swift in Sources */,
 				9EC105002AFDAA070045FAD6 /* GithubSearchCell.swift in Sources */,

@@ -21,25 +21,28 @@ protocol RepoSearchListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class RepoSearchInteractor: PresentableInteractor<RepoSearchPresentable>, RepoSearchInteractable, RepoSearchPresentableListener {
-
+final class RepoSearchInteractor:
+    PresentableInteractor<RepoSearchPresentable>,
+    RepoSearchInteractable,
+    RepoSearchPresentableListener
+{
+    
+    // MARK: - Properties
+    
     weak var router: RepoSearchRouting?
     weak var listener: RepoSearchListener?
-
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
+    
+    // MARK: - Initializer
+    
     override init(presenter: RepoSearchPresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
     }
-
-    override func didBecomeActive() {
-        super.didBecomeActive()
-        // TODO: Implement business logic here.
+    
+    // MARK: - RepoSearchPresentableListener
+    
+    func updateQuery(query: String?) {
+        print(query)
     }
-
-    override func willResignActive() {
-        super.willResignActive()
-        // TODO: Pause any business logic.
-    }
+    
 }

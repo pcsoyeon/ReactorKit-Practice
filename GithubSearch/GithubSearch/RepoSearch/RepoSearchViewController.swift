@@ -11,12 +11,6 @@ import RIBs
 import RxSwift
 import SnapKit
 
-protocol RepoSearchPresentableListener: AnyObject {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
-}
-
 final class RepoSearchViewController:
     UIViewController,
     RepoSearchPresentable,
@@ -31,10 +25,35 @@ final class RepoSearchViewController:
     // MARK: - Properties
     
     weak var listener: RepoSearchPresentableListener?
+    private var disposeBag = DisposeBag()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindActions()
+    }
+    
+}
+
+// MARK: - Binding Actions
+
+extension RepoSearchViewController {
+    
+    private func bindActions() {
+        bindTextFieldAction()
+    }
+    
+    private func bindTextFieldAction() {
+        searchTextField
+            .rx
+            .controlEvent(.editingChanged)
+            .throttle(.milliseconds(300), latest: false, scheduler: MainScheduler.instance)
+            .bind(with: self) { owner, _ in
+                owner.listener?.updateQuery(query: owner.searchTextField.text)
+            }
+            .disposed(by: disposeBag)
     }
     
 }

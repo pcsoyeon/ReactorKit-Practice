@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let launchRouter = RepoSearchBuilder(dependency: AppComponent()).build()
-        self.laucnRouter = launchRouter
-        launchRouter.launch(from: window)
+        let appComponent = AppComponent()
+        laucnRouter = appComponent.repoSearchBuilder.build()
+        laucnRouter?.launch(from: window)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -8,13 +8,13 @@
 import RIBs
 
 protocol RepoSearchDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var repoSearchRepository: RepoSearchRepository { get }
 }
 
 final class RepoSearchComponent: Component<RepoSearchDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var initialState: RepoSearchState {
+        RepoSearchState()
+    }
 }
 
 // MARK: - Builder
@@ -23,18 +23,17 @@ protocol RepoSearchBuildable: Buildable {
     func build() -> LaunchRouting
 }
 
-final class RepoSearchBuilder: Builder<RepoSearchDependency>, RepoSearchBuildable {
+final class RepoSearchBuilder: 
+    SimpleComponentizedBuilder<RepoSearchComponent, LaunchRouting>,
+    RepoSearchBuildable
+{
 
-    override init(dependency: RepoSearchDependency) {
-        super.init(dependency: dependency)
-    }
-
-    func build() -> LaunchRouting {
-        let component = RepoSearchComponent(dependency: dependency)
+    override func build(with component: RepoSearchComponent) -> LaunchRouting {
         let viewController = RepoSearchViewController()
         let interactor = RepoSearchInteractor(
             presenter: viewController,
-            initialState: .init()
+            initialState: component.initialState,
+            repository: component.dependency.repoSearchRepository
         )
         
         return LaunchRouter(
@@ -42,4 +41,5 @@ final class RepoSearchBuilder: Builder<RepoSearchDependency>, RepoSearchBuildabl
             viewController: viewController
         )
     }
+    
 }

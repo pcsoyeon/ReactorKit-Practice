@@ -11,5 +11,16 @@ final class AppComponent: Component<EmptyComponent>, RepoSearchDependency {
     init() {
         super.init(dependency: EmptyComponent())
     }
+    
+    var repoSearchBuilder: RepoSearchBuildable {
+        RepoSearchBuilder {
+            RepoSearchComponent(dependency: self)
+        }
+    }
+    
+    var repoSearchRepository: RepoSearchRepository {
+        RepoSearchImpl()
+    }
+    
 }
 

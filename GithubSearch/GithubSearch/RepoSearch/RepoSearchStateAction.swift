@@ -24,4 +24,7 @@ enum RepoSearchAction {
 
 protocol RepoSearchPresentableListener: AnyObject {
     func updateQuery(query: String?)
+    
+    typealias State = RepoSearchState
+    var state: Observable<State> { get }
 }

@@ -32,9 +32,14 @@ final class RepoSearchViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        bindActions()
+        bind(listener: listener)
     }
     
+    private func bind(listener: RepoSearchPresentableListener?) {
+        guard let listener = listener else { return }
+        bindActions()
+        bindStates(listener: listener)
+    }
 }
 
 // MARK: - Binding Actions
@@ -52,6 +57,20 @@ extension RepoSearchViewController {
             .throttle(.milliseconds(300), latest: false, scheduler: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 owner.listener?.updateQuery(query: owner.searchTextField.text)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+}
+
+// MARK: - Binding State
+
+extension RepoSearchViewController {
+    
+    private func bindStates(listener: RepoSearchPresentableListener) {
+        listener.state.map { $0.repos }
+            .bind(to: tableView.rx.items(cellIdentifier: "GithubSearchCell", cellType: GithubSearchCell.self)) { indexPath, repo, cell in
+                cell.fetchData(data: repo)
             }
             .disposed(by: disposeBag)
     }

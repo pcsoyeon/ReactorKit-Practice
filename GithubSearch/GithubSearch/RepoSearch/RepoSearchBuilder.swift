@@ -32,7 +32,10 @@ final class RepoSearchBuilder: Builder<RepoSearchDependency>, RepoSearchBuildabl
     func build() -> LaunchRouting {
         let component = RepoSearchComponent(dependency: dependency)
         let viewController = RepoSearchViewController()
-        let interactor = RepoSearchInteractor(presenter: viewController)
+        let interactor = RepoSearchInteractor(
+            presenter: viewController,
+            initialState: .init()
+        )
         
         return LaunchRouter(
             interactor: interactor,

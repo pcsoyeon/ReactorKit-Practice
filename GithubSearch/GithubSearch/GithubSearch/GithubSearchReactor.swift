@@ -56,6 +56,7 @@ class GithubSearchReactor: Reactor {
             ])
         }
     }
+    
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
